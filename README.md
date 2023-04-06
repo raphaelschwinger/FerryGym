@@ -7,6 +7,8 @@ A gym environment to simulate a ferry traversing the Kiel fjord.
 This environment should simulate a ferry agent navigating in the Kiel fjord.
 The goal is to reach a target location while staying on the fjord and avoiding collisions with other ships.
 
+![FerryGym](./screenshot.png)
+
 ### Action space
 
 The ferry can accelerate (or brake) and turn its heading.
