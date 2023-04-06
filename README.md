@@ -12,13 +12,13 @@ The goal is to reach a target location while staying on the fjord and avoiding c
 ### Action space
 
 The ferry can accelerate (or brake) and turn its heading.
-Acceleration is measured in m/s^2, and and limited to physical possible values.
-Turning is measured in degree.
+Acceleration is measured in m/s^2, and limited to physical possible values.
+Turning is measured in degrees.
 
 ### Observation space
 
 The observation space is a dictionary containing the following keys: - `agent_position`: A 2D vector representing the position of the agent in environment coordinates. - `agent_direction`: A floating point value representing the direction the agent is facing in degrees. - `agent_speed`: A floating point value representing the speed of the agent. - `target`: A 2D vector representing the position of the target in latitude and longitude coordinates. - `neighborhood`: A 3D array of unsigned integers with a shape of (NEIGHBORHOOD_SIZE, NEIGHBORHOOD_SIZE, 3) representing the agent's local environment. - `agent_starting_position`: A 2D vector representing the starting position of the agent in latitude and longitude coordinates.
-NOTE: This environment can be used to generate the training set for the [PPUU](https://github.com/Atcold/pytorch-PPUU) algorithm. Use the 'generate_training_data' flag to enable this mode. This will save a new pandas dataset with an additional column containing the path to a file containing the neighborhood for each ship and timestep.
+NOTE: This environment can be used to generate the training set for the [PPUU](https://github.com/Atcold/pytorch-PPUU) algorithm. Use the 'generate_training_data' flag to enable this mode. This will save a new pandas dataset with an additional column containing the path to a file containing the neighbourhood for each ship and timestep.
 
 ### Episode termination
 
