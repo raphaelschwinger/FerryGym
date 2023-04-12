@@ -2,11 +2,10 @@
 from turtle import width
 import matplotlib.pyplot as plt
 import numpy as np
-import torch
 
 # local modules
-from FerryGymEnv.FerryGymEnv import FerryGymEnv
-from FerryGymEnv.MapRevMoenk import BOUND_RIGHT, BOUND_LEFT, BOUND_TOP, BOUND_BOTTOM
+from FerryGymEnv import FerryGymEnv
+from MapRevMoenk import BOUND_RIGHT, BOUND_LEFT, BOUND_TOP, BOUND_BOTTOM
 
 env = FerryGymEnv()
 max_x, max_y = env.convertLatLotInEnvCoordinates(BOUND_BOTTOM, BOUND_RIGHT)
