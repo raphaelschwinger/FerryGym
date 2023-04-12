@@ -648,7 +648,12 @@ class FerryGymEnv(gym.Env):
         
         # draw agent in center of the neighborhood in blue
         draw_rect(neighborhood, (0, 0, 255), (NEIGHBORHOOD_SIZE/2, NEIGHBORHOOD_SIZE/2, agent.length * NEIGHBORHOOD_SCALE, agent.width * NEIGHBORHOOD_SCALE), 0)
-        return pygame.surfarray.array3d(neighborhood)
+        # convert surface to numpy array
+        array = pygame.surfarray.array3d(neighborhood)
+        # rotate and flip the the array to match the agent's direction (always pointing up)
+        array = np.rot90(array, 3)
+        array = np.fliplr(array)
+        return array
 
         # DISPLAY images for debugging purposes
         # pygame.image.save(neighborhood, "vehicle_surface.png")

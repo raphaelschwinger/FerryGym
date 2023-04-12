@@ -79,6 +79,32 @@ def plot_df(df, margin = 500):
     plt.xlim(min_x - margin, max_x + margin)
     plt.ylim(max_y + margin, max(min_y - margin, 0))
 
+def plot_single_frame(df, margin=500):
+    img_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "15-50-rev-moenk.png")
+    img = plt.imread(img_path)
+    plt.imshow(img, extent=axis_measure, origin='lower')
+    plt.gca().invert_yaxis()
+
+    arrow_length = 20
+
+    for mmsi in df['mmsi'].unique():
+        color = np.random.rand(3,)
+        for index, row in df[df['mmsi'] == mmsi].sort_values(by=['datetime']).iterrows():
+            dx = arrow_length * np.sin(np.radians(row['direction']))
+            dy = -arrow_length * np.cos(np.radians(row['direction']))
+            plt.arrow(row.x, row.y, dx, dy, color=color, linewidth=1, head_width=10, head_length=10, length_includes_head=True)
+            
+            # Add mmsi labels
+            plt.text(row.x, row.y, str(row['mmsi']), fontsize=8, color=color)
+
+    min_x = min(df['x'])
+    max_x = max(df['x'])
+    min_y = min(df['y'])
+    max_y = max(df['y'])
+    plt.xlim(min_x - margin, max_x + margin)
+    plt.ylim(max_y + margin, max(min_y - margin, 0))
+
+
 def heatmap2d(arr: np.ndarray):
     
     plt.imshow(arr, cmap='viridis', extent=axis_measure, origin='lower')
