@@ -602,6 +602,9 @@ class FerryGymEnv(gym.Env):
         return sea_land_grid
 
     def _render_neighborhood(self, agent):
+        return self.render_neighborhood(agent, self.ships)
+
+    def render_neighborhood(self, agent, ships):
         """
         Render the neighborhood of the agent.
         The agent is centered in the middle and always facing up.
@@ -628,7 +631,7 @@ class FerryGymEnv(gym.Env):
         draw_polygone(neighborhood, (0, 0, 0), (0,0), agentCoordinates)
         
         # draw ships in neighborhood in green
-        for ship in self.ships:
+        for ship in ships:
             # print('draw ship with mmsi: ', ship.mmsi, 'ship position: ', ship.position)
             position = self.convertEnvCoordinatesToAgentCoordinates(ship.position, agent)
             # rotate around the agent's position
