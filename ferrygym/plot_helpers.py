@@ -2,6 +2,9 @@
 from turtle import width
 import matplotlib.pyplot as plt
 import numpy as np
+from typing import List, Dict, Tuple
+import os
+
 
 # local modules
 from FerryGymEnv import FerryGymEnv
@@ -11,9 +14,9 @@ env = FerryGymEnv()
 max_x, max_y = env.convertLatLotInEnvCoordinates(BOUND_BOTTOM, BOUND_RIGHT)
 axis_measure = [0, max_x, 0, max_y]
 
-
-def plot_trajectories(trajectories: tuple[list[dict[float, float], str]]):
-    img = plt.imread("/workspace/FerryGymEnv/15-50-rev-moenk.png")
+def plot_trajectories(trajectories: Tuple[List[Dict[float, float]], str]):
+    img_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "15-50-rev-moenk.png")
+    img = plt.imread(img_path)
     plt.imshow(img, extent=axis_measure, origin='lower')
     plt.gca().invert_yaxis()
     # for every mmsi in df plot the trajectory
@@ -24,11 +27,11 @@ def plot_trajectories(trajectories: tuple[list[dict[float, float], str]]):
         plt.plot([x for x, y in trajectory], [y for x, y in trajectory], label=label, color=color)
     # plot target position [2244.34601982, 90.73506014]
     plt.plot(2244.34601982, 90.73506014, label='target', color='red', marker='o')
-
     plt.legend()
 
-def plot_states(states: tuple[list[dict[float, float], str, str]], margin=500):
-    img = plt.imread("/workspace/FerryGymEnv/15-50-rev-moenk.png")
+def plot_states(states: Tuple[List[Dict[float, float]], str, str], margin=500):
+    img_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "15-50-rev-moenk.png")
+    img = plt.imread(img_path)
     plt.imshow(img, extent=axis_measure, origin='lower')
     plt.gca().invert_yaxis()
     # for every mmsi in df plot the trajectory
@@ -51,7 +54,8 @@ def plot_states(states: tuple[list[dict[float, float], str, str]], margin=500):
     plt.legend()
 
 def plot_df(df, margin = 500):
-    img = plt.imread("/workspace/FerryGymEnv/15-50-rev-moenk.png")
+    img_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "15-50-rev-moenk.png")
+    img = plt.imread(img_path)
     plt.imshow(img, extent=axis_measure, origin='lower')
     plt.gca().invert_yaxis()
 
