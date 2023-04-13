@@ -1,7 +1,6 @@
 import numpy as np
 import torch
 import math
-import constants
 
 def gaussian_2d(x=0, y=0, mx=0, my=0, sx=1, sy=1):
     return 1 / (2*math.pi*sx*sy) * \
