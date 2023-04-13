@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Raphael Schwinger <raphaelschwinger@gmail.com>"]
 readme = "README.md"
-include = ["ferrygym/**/*.png"]
+include = ["ferrygym/**/*.png", "ferrygym/constants.py"]
 
 
 [tool.poetry.dependencies]
